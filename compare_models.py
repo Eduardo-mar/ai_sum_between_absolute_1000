@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
+from visualizations import visualize_comparitive
 
 def compare_models(model_paths, X_test, y_test):
     """
@@ -27,27 +27,11 @@ def compare_models(model_paths, X_test, y_test):
     maes = results[:, 1]
     
     # Plot comparison
-    x = np.arange(len(model_names))  # Index for each model
-    width = 0.4  # Bar width
-    
-    plt.figure(figsize=(10, 6))
-    # Plot Loss
-    plt.bar(x - width/2, losses, width, label='Loss', color='skyblue')
-    # Plot MAE
-    plt.bar(x + width/2, maes, width, label='MAE', color='orange')
-    
-    # Add titles and labels
-    plt.title("Model Performance Comparison", fontsize=16)
-    plt.xlabel("Models", fontsize=12)
-    plt.ylabel("Performance Metrics", fontsize=12)
-    plt.xticks(x, model_names, fontsize=10)
-    plt.legend(fontsize=12)
-    plt.tight_layout()
-    plt.show()
+    visualize_comparitive(model_names, losses, maes)
 
 # Example usage
 # Paths to the saved models
-model_paths = ["models/sum1.h5", "models/sum_2.h5"]
+model_paths = ["models/sum_1.h5", "models/sum_2.h5"]
 
 # Example test dataset (replace with actual test data)
 X_test = np.array([[0, -5], [100, 7], [32, 40], [25, -54], [1996, 1993]])  # Replace with your features

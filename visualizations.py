@@ -152,3 +152,23 @@ def visualize_loss_curve(history, use_log_scale=False):
     plt.legend()
     plt.tight_layout()
     plt.show()
+
+# Visualize comparative performance of multiple models
+def visualize_comparitive(model_names, losses, maes):
+    x = np.arange(len(model_names))  # Index for each model
+    width = 0.4  # Bar width
+    
+    plt.figure(figsize=(10, 6))
+    # Plot Loss
+    plt.bar(x - width/2, losses, width, label='Loss', color='skyblue')
+    # Plot MAE
+    plt.bar(x + width/2, maes, width, label='MAE', color='orange')
+    
+    # Add titles and labels
+    plt.title("Model Performance Comparison", fontsize=16)
+    plt.xlabel("Models", fontsize=12)
+    plt.ylabel("Performance Metrics", fontsize=12)
+    plt.xticks(x, model_names, fontsize=10)
+    plt.legend(fontsize=12)
+    plt.tight_layout()
+    plt.show()
