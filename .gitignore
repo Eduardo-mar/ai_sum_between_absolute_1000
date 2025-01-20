@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# project files
+models
+dataset.csv
+dataset1.csv
+model_architecture.png
+
 # C extensions
 *.so
 
