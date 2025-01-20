@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from visualizations import *
 
 # Step 1: Import the dataset
-data = pd.read_csv('dataset.csv')
+data = pd.read_csv('dataset1.csv')
 print(data.head())  # Displays the first few rows of the dataset
 print(data.columns)  # Lists all column names in the dataset
 
@@ -34,7 +34,7 @@ model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
 
 # Step 4: Train the model
 print("Training the model...")
-history = model.fit(X_train, y_train, epochs=10, batch_size=10, verbose=1)
+history = model.fit(X_train, y_train, epochs=5, batch_size=10, verbose=1)
 
 # Step 5: Evaluate the model
 print("\nEvaluating the model on test data...")
@@ -60,16 +60,9 @@ visualize_bias(model, threshold=10)
 
 visualize_neural_net(model)
 
-# Step 9: Plot the Loss Curve
-plt.figure(figsize=(8, 6))
-plt.plot(history.history['loss'], label='Loss', marker='o')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.title('Loss Function Over Epochs')
-plt.legend()
-plt.show()
+visualize_loss_curve(history)
 
-# Step 10: Summarize Activation Functions and Final Model State
+# Step 9: Summarize Activation Functions and Final Model State
 print("Model Summary:")
 model.summary()
 

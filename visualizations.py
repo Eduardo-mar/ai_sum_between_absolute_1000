@@ -123,3 +123,31 @@ def visualize_neural_net(model):
     plt.legend(loc="upper left", fontsize=12)
     plt.tight_layout()  # Ensure everything fits
     plt.show()
+
+# Visualize the loss curve
+def visualize_loss_curve(history):
+    """
+    Visualizes the loss curve of a neural network during training.
+    
+    Parameters:
+    - history: The training history of the neural network model.
+    """
+    loss = history.history['loss']
+    epochs = range(1, len(loss) + 1)
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(epochs, loss, color='steelblue', marker='o', linestyle='-', linewidth=2)
+    plt.title('Loss Function Over Epochs', fontsize=16)
+    plt.xlabel('Epoch', fontsize=12)
+    plt.ylabel('Loss', fontsize=12)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    plt.figure(figsize=(8, 6))
+
+# plt.plot(history.history['loss'], label='Loss', marker='o')
+# plt.xlabel('Epochs')
+# plt.ylabel('Loss')
+# plt.title('Loss Function Over Epochs')
+# plt.legend()
+# plt.show()
