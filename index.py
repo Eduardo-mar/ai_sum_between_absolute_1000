@@ -14,8 +14,7 @@ print(data.columns)  # Lists all column names in the dataset
 # Assuming your dataset has columns 'Feature' and 'Target'
 X = data[['a', 'b']].values # Extract and reshape the feature column
 y = data['c'].values.reshape(-1, 1)  # Extract and reshape the target column
-print("Features (X):", X)
-print("Labels (y):", y)
+
 # Step 2: Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 print(X_train, y_train)
@@ -60,7 +59,7 @@ visualize_bias(model, threshold=10)
 
 visualize_neural_net(model)
 
-visualize_loss_curve(history)
+visualize_loss_curve(history, True)
 
 # Step 9: Summarize Activation Functions and Final Model State
 print("Model Summary:")

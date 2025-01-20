@@ -124,30 +124,31 @@ def visualize_neural_net(model):
     plt.tight_layout()  # Ensure everything fits
     plt.show()
 
-# Visualize the loss curve
-def visualize_loss_curve(history):
+# Visualize the loss curve with optional logarithmic scale
+def visualize_loss_curve(history, use_log_scale=False):
     """
     Visualizes the loss curve of a neural network during training.
     
     Parameters:
     - history: The training history of the neural network model.
+    - use_log_scale (bool): Whether to use a logarithmic scale for the y-axis.
     """
     loss = history.history['loss']
     epochs = range(1, len(loss) + 1)
     
     plt.figure(figsize=(10, 6))
-    plt.plot(epochs, loss, color='steelblue', marker='o', linestyle='-', linewidth=2)
-    plt.title('Loss Function Over Epochs', fontsize=16)
+    plt.plot(epochs, loss, color='steelblue', marker='o', linestyle='-', linewidth=2, label='Training Loss')
+    
+    # Apply logarithmic scale if enabled
+    if use_log_scale:
+        plt.yscale('log')
+        plt.title('Logarithmic Loss Function Over Epochs', fontsize=16)
+    else:
+        plt.title('Loss Function Over Epochs', fontsize=16)
+    
     plt.xlabel('Epoch', fontsize=12)
     plt.ylabel('Loss', fontsize=12)
-    plt.grid(True)
+    plt.grid(True, which="both", linestyle='--', linewidth=0.5)  # Grid for both major and minor ticks
+    plt.legend()
     plt.tight_layout()
     plt.show()
-    plt.figure(figsize=(8, 6))
-
-# plt.plot(history.history['loss'], label='Loss', marker='o')
-# plt.xlabel('Epochs')
-# plt.ylabel('Loss')
-# plt.title('Loss Function Over Epochs')
-# plt.legend()
-# plt.show()
